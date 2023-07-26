@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup MSBuild
-        uses: setup-vs2019@v1
+        uses: warrenbuckley/Setup-MSBuild@v1
 
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
