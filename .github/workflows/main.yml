@@ -20,9 +20,15 @@ jobs:
       fail-fast: false
 
     steps:
-      - uses: actions/checkout@v1
-        with:
-          submodules: true
+      # - uses: actions/checkout@v1
+      #  with:
+      #    submodules: true
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup MSBuild
+        uses: setup-vs2019@v1
 
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
