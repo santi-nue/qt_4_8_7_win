@@ -30,6 +30,12 @@ jobs:
       # - name: Setup MSBuild
       #  uses: warrenbuckley/Setup-MSBuild@v1
 
+      - name: Cache workspace
+        uses: actions/cache@v3
+        with:
+          path: ${{ github.workspace }}
+          key: ${{ runner.os }}-workspace-${{ hashFiles('**') }}
+
       - name: Build (Windows)
         if: startsWith(matrix.os, 'windows')
         run: |
@@ -42,3 +48,8 @@ jobs:
             nmake
         shell: cmd
 
+      - name: upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: qt4winx86
+          path: ${{ github.workspace }}
