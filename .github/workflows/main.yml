@@ -46,10 +46,11 @@ jobs:
             patch -p0 < qt-4.8.7-win.patch
             yes yes | configure -debug-and-release -no-qt3support -no-multimedia -no-audio-backend -no-phonon -no-phonon-backend -no-libtiff -no-libmng -no-dbus -no-nis -webkit -nomake examples -nomake demos -opensource -platform win32-msvc2015
             nmake
+            7z a qt4winx86.zip D:/a/qt_4_8_7_win/
         shell: cmd
 
       - name: upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: qt4winx86
-          path: ${{ github.workspace }}
+          path:  qt4winx86.zip
